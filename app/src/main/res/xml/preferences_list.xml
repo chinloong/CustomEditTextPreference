@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="status_choice"
+        android:entries="@array/array_status_entries"
+        android:entryValues="@array/array_status_values"
+        android:title="@string/choose_status_title"
+        android:summary="%s"
+        android:defaultValue="0"
+        />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="has_email"
+        android:title="@string/has_email_title" >
+    </CheckBoxPreference>
+    <com.customedittextpreference.CustomEditTextPreference
+        android:widgetLayout="@layout/prefwidget_edittext"
+        android:title="@string/productcode_title"
+        android:key="code"/>
+</PreferenceScreen>

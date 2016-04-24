@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">CustomEditTextPreference</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="choose_status_title">Status</string>
+    <string name="has_email_title">Has Email</string>
+    <string name="productcode_title">Product Code</string>
+
+
+    <string-array name="array_status_entries">
+        <item name="0">New</item>
+        <item name="1">Open</item>
+        <item name="2">Resolved</item>
+        <item name="3">Close</item>
+    </string-array>
+
+    <string-array name="array_status_values">
+        <item name="0">0</item>
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+    </string-array>
+</resources>
