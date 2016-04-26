@@ -44,6 +44,7 @@ public class CustomEditTextPreference extends EditTextPreference {
             public void onClick(View v) {
 
                 setText("");
+                notifyChanged();
 
             }
         });
@@ -81,7 +82,7 @@ public class CustomEditTextPreference extends EditTextPreference {
                 valueTextView.setText(newStringValue);
 
                 toggleClearButton(newStringValue);
-
+                notifyChanged();
                 return true;
             }
         });
