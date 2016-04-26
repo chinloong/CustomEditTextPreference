@@ -1,8 +1,6 @@
 package com.customedittextpreference;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.media.Image;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.util.AttributeSet;
@@ -61,7 +59,7 @@ public class CustomEditTextPreference extends EditTextPreference {
 
     private void toggleClearButton(String value)
     {
-        if (value.length()==0)
+        if ((value==null) || (value.length()==0))
         {
             clearButton.setVisibility(View.GONE);
         }
