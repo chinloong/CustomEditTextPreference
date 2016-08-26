@@ -14,6 +14,7 @@ import android.widget.TextView;
  */
 public class CustomEditTextPreference extends EditTextPreference {
 
+    private static final String TAG = "CustomEditTextPref";
     private ImageButton clearButton;
     private TextView valueTextView;
 
@@ -37,6 +38,7 @@ public class CustomEditTextPreference extends EditTextPreference {
         super.onBindView(view);
 
         valueTextView = (TextView) view.findViewById(R.id.value_textview);
+        valueTextView.setSelected(true);
         clearButton = (ImageButton) view.findViewById(R.id.clear_button);
 
         clearButton.setOnClickListener(new View.OnClickListener() {
@@ -50,13 +52,30 @@ public class CustomEditTextPreference extends EditTextPreference {
         });
 
         String valueString = getText();
-        Log.v(Settings.APP_NAME, "refreshValue(): valueString=" + valueString);
-        valueTextView.setText(valueString);
+        truncateDisplayValue(valueString,valueTextView);
 
         toggleClearButton(valueString);
 
     }
 
+
+    private void truncateDisplayValue(String inputString, TextView inputTextView)
+    {
+        int maxStringLength = inputTextView.getMaxEms();
+        String truncationIndicator = "...";
+
+        if (inputString.length() > maxStringLength)
+        {
+            inputTextView.setText(inputString.substring(0,maxStringLength-truncationIndicator.length())+truncationIndicator);
+        }
+        else
+        {
+            inputTextView.setText(inputString);
+        }
+
+
+
+    }
 
     private void toggleClearButton(String value)
     {
@@ -79,7 +98,7 @@ public class CustomEditTextPreference extends EditTextPreference {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
 
                 String newStringValue = (String) newValue;
-                valueTextView.setText(newStringValue);
+                truncateDisplayValue(newStringValue,valueTextView);
 
                 toggleClearButton(newStringValue);
                 notifyChanged();
